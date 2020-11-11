@@ -11,7 +11,7 @@ E0 = 1; % field amplitude
 
 dw = 2 * pi / ((length (t) - 1) * dt);
 w_max = pi / dt;
-w = linspace(-w_max, w_max - dw, N);
+w = linspace (-w_max, w_max - dw, N);
 %w = 0:dw:2*w_max;
 
 
@@ -33,7 +33,7 @@ ylabel ('Intensity, arb. units');
 title ('Input pulse');
 grid on;
 
-% E_w = fft (E_t);
+E_w = fft (E_t);
 % plot (w, fftshift (abs (E_w).^2 / max (abs (E_w).^2)));
 % xlim ([0.1e16 0.4e16]);
 % grid on;
@@ -104,7 +104,7 @@ Phase_w = [w_before , Phase_flip, w_after];
 % Phase_detrend_w = detrend (Phase_w);
 % E_w = fft(E_t);
 % Ew = tau * sqrt (2 * pi) * exp (-((w - w0) * tau).^2 / 2) .* exp (1i * Phase_detrend_w); % Analytical spectrum calculation 
-pulse = ifft (E_w .* exp(1i * Phase_w));
+pulse = ifft (E_w .* exp(1i * 10 * Phase_w));
 subplot (3, 2, 6);
 plot (t, abs (pulse).^2 / max (abs (pulse).^2));
 xlim ([-30e-15 30e-15]);
